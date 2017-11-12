@@ -15,7 +15,7 @@ public class ProductItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="name")
+    @Column(name="name", nullable = false)
     private String name;    //名称
 
     @Column(name="factory")
@@ -36,4 +36,21 @@ public class ProductItem {
     @Column(name="status")
     private String status; //0-进场  1-预备  2-生产   3-完成
 
+    @Column(name="make_order")
+    private Integer makeOrder; //生产排序
+
+    @Override
+    public String toString() {
+        return "ProductItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", factory='" + factory + '\'' +
+                ", material='" + material + '\'' +
+                ", type='" + type + '\'' +
+                ", number=" + number +
+                ", toCustomerTime=" + toCustomerTime +
+                ", status='" + status + '\'' +
+                ", makeOrder=" + makeOrder +
+                '}';
+    }
 }
