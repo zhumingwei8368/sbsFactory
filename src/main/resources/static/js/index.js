@@ -15,7 +15,8 @@ $(function() {
 		condition.status = "";
 		$.ajax({
 			type: "GET",
-			url: "http://localhost:9090/rest/products?status",
+			//url: "http://localhost:9090/rest/products?status",
+			url: "/rest/products?status",
 			//data: JSON.stringify(condition),
 			//dataType: json,
 			timeout: 3000,
