@@ -34,7 +34,7 @@ public class ProductItem {
     private Long toCustomerTime;//交货时间
 
     @Column(name="status")
-    private String status; //0-进场  1-预备  2-生产   3-完成
+    private String status; //0-进场  1-预备  2-生产   3-完成   4-交货
 
     @Column(name="make_order")
     private Integer makeOrder; //生产排序
