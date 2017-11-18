@@ -1,11 +1,12 @@
 package com.sbs.sbs;
 
-import com.sbs.sbs.dao.ProductItem;
-import com.sbs.sbs.dao.ProductRepository;
+import com.sbs.dao.ProductItem;
+import com.sbs.dao.ProductRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -22,11 +23,13 @@ public class SbsApplicationTests {
 
 	@Test
 	public void test_findByStatus() throws Exception {
-		List<ProductItem> items = repository.findAll();
+		Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+		List<ProductItem> items = repository.findAll(sort);
 		for (ProductItem item : items) {
 			System.out.println(item);
 		}
 
 		items = repository.findByStatus("1");
+		System.out.println(items);
 	}
 }

@@ -1,10 +1,15 @@
+
+var debug='';
+//var debug='http://localhost:9090';
+var query_url = debug+'/rest/products?status';
+
+
 function queryData() {
 	var condition = new Object();
 	condition.status = "";
 	$.ajax({
 		type: "GET",
-		//url: "http://localhost:9090/rest/products?status",
-		url: "/rest/products?status",
+		url: query_url,
 		timeout: 3000,
 		async: false,
 		contentType: "application/json; charset=utf-8",
@@ -14,7 +19,7 @@ function queryData() {
 			initTodoTable(data);
 		},
 		error: function(msg) {
-			alert("system error...");
+			swal({title:'刷新系统后台数据',text:'刷新失败',timer:3000,showConfirmButton:false,type:'error'});
 		}
 	});
 };
@@ -37,15 +42,24 @@ function initTable(rows, table, status) {
 
 	$('#' + table).DataTable({
 		"data": data,
+		"bLengthChange": false,
+		"searching": false,
 		"bAutoWidth": true,
-		"destroy":true,
+		"destroy": true,
 		"columns": [{
+                "title": "编号",
+                "data": "id",
+                "width": "40px"
+            },
+            {
 				"title": "名称",
-				"data": "name"
+				"data": "name",
+				"width": "20%"
 			},
 			{
 				"title": "厂家",
-				"data": "factory"
+				"data": "factory",
+				"width": "20%"
 			},
 			{
 				"title": "材料",
@@ -57,7 +71,8 @@ function initTable(rows, table, status) {
 			},
 			{
 				"title": "数量",
-				"data": "number"
+				"data": "number",
+				"width": "60px"
 			},
 			{
 				"title": "交货时间",
@@ -65,8 +80,29 @@ function initTable(rows, table, status) {
 			},
 			{
 				"title": "生产顺序",
-				"data": "makeOrder"
+				"data": "makeOrder",
+				"width": "80px"
 			}
+		],
+		"order": [[7, 'asc' ]],
+		"oLanguage": {
+			"sLengthMenu": "每页显示 _MENU_ 条记录",
+			"sZeroRecords": "对不起，查询不到任何相关数据",
+			"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_条记录",
+			"sInfoEmtpy": "找不到相关数据",
+			"sInfoFiltered": "数据表中共为 _MAX_ 条记录)",
+			"sProcessing": "正在加载中...",
+			"sSearch": "搜索",
+			"oPaginate": {
+				"sFirst": "第一页",
+				"sPrevious": " 上一页 ",
+				"sNext": " 下一页 ",
+				"sLast": " 最后一页 "
+			},
+		},
+		"aLengthMenu": [
+			[8, 20, 100, -1],
+			[8, 20, 100, "All"]
 		]
 	});
 }
@@ -81,4 +117,4 @@ function showTime() {
 
 setInterval("this.showTime()", 1000);
 queryData();
-setInterval("queryData()", 5000);
+setInterval("queryData()", 10000);

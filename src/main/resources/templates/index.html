@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
-		<meta charset="UTF-8"/>
+		<meta charset="UTF-8" />
 		<title>sbs product system</title>
-		
+
 		<link href="../static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="../static/datatable/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+		<link href="../static/sweat-alert/css/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+		
 		<link href="../static/css/index.css" rel="stylesheet" type="text/css" />
+
+		<style type="text/css">
+			div.table-range {
+				border-style: groove;
+				margin-left: 20px;
+				margin-right: 20px;
+				margin-bottom: 40px;
+			}
+		</style>
 	</head>
+
 	<body>
 		<div id="title" class="title">
-			<h1 id="current-time" class="text-center">current time</h1>
+			<h1 id="current-time" class="text-center"><strong>current time</strong></h1>
 		</div>
-		
-		<div id = "doing" class="doing">
-			<h2>正在生产</h2>
-			<table  id="doing-table" class="display"></table >
+
+		<div id="doing" class="doing">
+			<h2 style="margin-left: 20px; margin-top:20px;"><strong>生产中...</strong></h2>
+			<div class="table-range">
+				<table id="doing-table" class="display"></table>
+			</div>
 		</div>
-		
-		<div id = "todo" class="todo">
-			<h2>等待生产</h2>
-			<table  id="todo-table" class="display"></table >
+
+		<div id="todo" class="todo">
+			<h2 style="margin-left: 20px; margin-top:20px;"><strong>等待生产</strong></h2>
+			<div class="table-range">
+				<table id="todo-table" class="display"></table>
+			</div>
 		</div>
 	</body>
-	
+
 	<script src="../static/lib/jquery-2.1.1.min.js"></script>
 	<script src="../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../static/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="../static/sweat-alert/js/sweetalert2.min.js"></script>
+	
 	<script src="../static/js/index.js"></script>
+
 </html>

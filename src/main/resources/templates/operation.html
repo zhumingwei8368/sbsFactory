@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>sbs product system</title>
+		
+		<link href="../static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../static/datatable/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+		<link href="../static/sweat-alert/css/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+		
+		<link href="../static/css/index.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="title" class="title">
+			<h1 class="text-center">xx生产系统 操作区</h1>
+		</div>
+		
+		<button id = "add-btn" class="btn btn-primary" style="margin-left: 20px;">
+			<span class="glyphicon glyphicon-plus"></span> 新增入库
+		</button>
+		
+		<div id = "doing" class="doing" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;">
+			<table id="all-table" class="display"></table >
+		</div>
+	</body>
+	
+	<div class="modal" id="add-dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-head">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title">产品入库</h3>
+				</div>
+				<div class="modal-body">
+					<form action="#" class="form-horizontal">
+					<div class="form-group">
+						<label for="name" class="control-label col-sm-3">产品名称:</label>
+						<div class="col-sm-6">
+							<input type="text" autofocus="true" required="true" id="name" placeholder="填产品名称" class="form-control"></input>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="factory" class="control-label col-sm-3">厂家:</label>
+						<div class="col-sm-6">
+							<input type="text" autofocus="true" required="true" id="factory" placeholder="厂家" class="form-control"></input>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="material" class="control-label col-sm-3">材料:</label>
+						<div class="col-sm-6">
+							<input type="text" autofocus="true" required="true" id="material" placeholder="材料" class="form-control"></input>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="type" class="control-label col-sm-3">工艺类型:</label>
+						<div class="col-sm-6">
+							<select id="type" class="form-control">
+								<option value="工艺A">工艺A</option>
+								<option value="工艺B">工艺B</option>
+								<option value="工艺C">工艺C</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="number" class="control-label col-sm-3">数量:</label>
+						<div class="col-sm-6">
+							<input type="number" min="1" max="10000" id="number" placeholder="数量" class="form-control"></input>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="toCustomerTime" class="control-label col-sm-3">交货时间:</label>
+						<div class="col-sm-6">
+							<input type="date" id="toCustomerTime" class="form-control"></input>
+						</div>
+					</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="add-submit-btn" class="btn btn-primary center-block"><span class="glyphicon glyphicon-ok"></span> 提交</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="modify-dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-head">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title">修改产品信息</h3>
+				</div>
+				<div class="modal-body">
+					<form action="#" class="form-horizontal">
+					<div class="form-group">
+						<label for="id" class="control-label col-sm-3">编号:</label>
+						<div class="col-sm-6">
+							<input type="text" id="id" readonly="true" class="form-control"></input>
+						</div>
+					</div>		
+					<div class="form-group">
+						<label for="name" class="control-label col-sm-3">产品名称:</label>
+						<div class="col-sm-6">
+							<input type="text" autofocus="true" required="true" id="name" class="form-control"></input>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="factory" class="control-label col-sm-3">厂家:</label>
+						<div class="col-sm-6">
+							<input type="text" autofocus="true" required="true" id="factory" class="form-control"></input>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="material" class="control-label col-sm-3">材料:</label>
+						<div class="col-sm-6">
+							<input type="text" autofocus="true" required="true" id="material" class="form-control"></input>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="type" class="control-label col-sm-3">工艺类型:</label>
+						<div class="col-sm-6">
+							<select id="type" class="form-control">
+								<option value="工艺A">工艺A</option>
+								<option value="工艺B">工艺B</option>
+								<option value="工艺C">工艺C</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="number" class="control-label col-sm-3">数量:</label>
+						<div class="col-sm-6">
+							<input type="number" min="1" max="10000" required="true" id="number"  class="form-control"></input>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="toCustomerTime" class="control-label col-sm-3">交货时间:</label>
+						<div class="col-sm-6">
+							<input type="date" id="toCustomerTime" class="form-control"></input>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="status" class="control-label col-sm-3">状态:</label>
+						<div class="col-sm-6">
+							<select id="status" class="form-control">
+								<option value="0">进场</option>
+								<option value="1">等待生产</option>
+								<option value="2">生产中</option>
+								<option value="3">生产完成</option>
+								<option value="4">已交货</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="makeOrder" class="control-label col-sm-3">生产排序:</label>
+						<div class="col-sm-6">
+							<input type="number"  min="1" max="1000" required="true" id="makeOrder"  class="form-control"></input>
+						</div>
+					</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="modify-submit-btn" class="btn btn-primary center-block"><span class="glyphicon glyphicon-ok"></span> 提交</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="../static/lib/jquery-2.1.1.min.js"></script>
+	<script src="../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="../static/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="../static/sweat-alert/js/sweetalert2.min.js"></script>
+	
+	<script src="../static/js/operation.js"></script>
+</html>
