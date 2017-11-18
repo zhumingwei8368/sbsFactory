@@ -22,19 +22,20 @@ CREATE TABLE `tbl_product` (
   `material` varchar(256) DEFAULT NULL,
   `type` varchar(256) DEFAULT NULL,
   `number` int(11) DEFAULT NULL,
-  `to_customer_time` bigint(20) DEFAULT NULL,
+  `to_customer_time` varchar(32) DEFAULT NULL,
   `status` varchar(32) DEFAULT NULL,
   `make_order` int(11) DEFAULT NULL,
+  `create_time` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 
 /*
 测试数据
 */
-INSERT INTO `tbl_product` VALUES (1, 'p1.1', 'f1', 'm1', 'type111', 10, 20171201, '0', 1);
-INSERT INTO `tbl_product` VALUES (2, 'p2.1', 'f1', 'm1', 'type222', 30, 20171201, '1', 2);
-INSERT INTO `tbl_product` VALUES (3, 'p1.3', 'f1', 'm3', 'type13', 10, 20171201, '1', 1);
-INSERT INTO `tbl_product` VALUES (4, 'p1.4', 'f1', 'm4', 'type13', 10, 20171201, '1', 1);
-INSERT INTO `tbl_product` VALUES (5, 'p1.5', 'f1', 'm4', 'type13', 10, 20171201, '2', 1);
-INSERT INTO `tbl_product` VALUES (6, 'p1.6', 'f1', 'm4', 'type13', 10, 20171203, '2', 1);
+INSERT INTO `tbl_product` VALUES (12, '大啊啊啊23', 'asdsad', '按时', '工艺C', 12, '2017-11-21', '2', 2, '2017-11-18 11:13:43');
+INSERT INTO `tbl_product` VALUES (13, '大啊啊啊', 'asdsad', '按时', '工艺C', 12, '2017-11-21', '1', 3, '2017-11-18 11:14:28');
+INSERT INTO `tbl_product` VALUES (27, 'sadasd', '1', '3', '工艺C', 111, '2017-11-30', '2', 1, '2017-11-18 16:29:59');
+INSERT INTO `tbl_product` VALUES (28, '产品1111', 'f222', 'sadasd', '工艺C', 12, '2017-11-25', '0', NULL, '2017-11-18 16:42:28');
+INSERT INTO `tbl_product` VALUES (29, '产品222', 'f222', 'sadasd', '工艺A', 1, '2017-11-25', '3', NULL, '2017-11-18 16:50:28');
+INSERT INTO `tbl_product` VALUES (30, '产品333', 'f223', 'sadasd', '工艺B', 121, '2017-11-25', '4', NULL, '2017-11-18 16:50:38');
