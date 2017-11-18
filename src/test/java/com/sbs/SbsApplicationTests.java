@@ -1,4 +1,4 @@
-package com.sbs.sbs;
+package com.sbs;
 
 import com.sbs.dao.ProductItem;
 import com.sbs.dao.ProductRepository;
